@@ -28,6 +28,6 @@ def process(request):
             "title"   : "Processo iniciado",
             "content" : result,
             "class"   : "success",
-            "loteria" : "megasena"
+            "loteria" : request.data["contest"].lower()
             }
         )

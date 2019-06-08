@@ -1,11 +1,13 @@
 from caixa.scripts import webdriver as wb
-from caixa.scripts import megasena
+from caixa.scripts import megasena, lotofacil
 
 def run(contest):
     driver = wb.Webdriver(prefs=True, headless=True)
     try:
         if contest == "megasena":
             data = megasena.Megasena(driver).get_data()
+        if contest == "lotofacil":
+            data = lotofacil.Lotofacil(driver).get_data()
     except Exception as a:
         return False
     finally:
