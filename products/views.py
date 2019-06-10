@@ -4,8 +4,12 @@ from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from caixa.scripts import run
+import os, time
+from os import walk
+from datetime import datetime
+
+
 
 def api(request, *args, **kwargs):
     try:
@@ -17,7 +21,7 @@ def api(request, *args, **kwargs):
         return JsonResponse(a)
 
 def home(request):
-    return render(request, "home.html")
+    return render(request, "home.html", {"data_files": data_files})
 
 # Create your views here.
 @api_view(['GET', 'POST'])
