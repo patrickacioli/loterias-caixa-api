@@ -14,7 +14,7 @@ class Quina:
 
         # Loading contest page
         self.page = driver.get(
-            "loterias.caixa.gov.br/wps/portal/loterias/landing/quina",
+            "http://loterias.caixa.gov.br/wps/portal/loterias/landing/quina",
             element_wait="title-bar",
             element_type="class"
         )
