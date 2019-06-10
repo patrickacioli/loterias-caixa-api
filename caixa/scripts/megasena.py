@@ -8,7 +8,6 @@ import caixa.scripts.helper as hp
 import re 
 import unidecode
 
-
 class Megasena:
 
     def __init__(self, driver):
