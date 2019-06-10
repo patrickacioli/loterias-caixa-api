@@ -16,29 +16,35 @@ from selenium.webdriver.firefox.options import Options
 
 class Webdriver:
 
-    def __init__(self, cache=False, headless=False, prefs=False, type_=False, client="chrome"):
-        click.echo("Loading Webdriver...")
+    def __init__(self, client=False):
 
         if client == "chrome":
-            self.chrome_options = webdriver.ChromeOptions()
-            if headless:
-                self.chrome_options.add_argument("--headless")
-            if cache:
-                self.chrome_options.add_argument("user-data-dir=/home/acioli/cache")
-            if prefs:
-                self.prefs={
-                    "profile.managed_default_content_settings.images": 2,
-                    "profile.managed_default_content_settings.stylesheet": 2,
-                    'disk-cache-size': 5000
-                    }
-                self.chrome_options.add_experimental_option('prefs', self.prefs)
-            self.driver = webdriver.Chrome(r'/usr/bin/chromedriver', chrome_options=self.chrome_options)
+            click.echo("Loading ChromeWebdriver...")
+            self.chrome()
         if client == "firefox":
-            options = Options()
-            if headless:
-                options.headless = True
-            self.driver = webdriver.Firefox(options=options, r'/usr/bin/geckodriver')
-            
+            click.echo("Loading GeckoDriver...")
+            self.firefox()
+
+
+    def firefox(self):
+        options = Options()
+        options.headless = True
+        self.driver = webdriver.Firefox(options=options, executable_path='/usr/bin/geckodriver')
+
+    def chrome(self, cache=False, headless=False, prefs=False, type_=False):
+        self.chrome_options = webdriver.ChromeOptions()
+        if headless:
+            self.chrome_options.add_argument("--headless")
+        if cache:
+            self.chrome_options.add_argument("user-data-dir=/home/acioli/cache")
+        if prefs:
+            self.prefs={
+                "profile.managed_default_content_settings.images": 2,
+                "profile.managed_default_content_settings.stylesheet": 2,
+                'disk-cache-size': 5000
+                }
+            self.chrome_options.add_experimental_option('prefs', self.prefs)
+        self.driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=self.chrome_options)
 
     def get(self, url, element_wait=False, element_type=False):
         click.echo("Loading url: %s" % url)

@@ -2,7 +2,7 @@ from caixa.scripts import webdriver as wb
 from caixa.scripts import megasena, lotofacil, quina
 
 def run(contest):
-    driver = wb.Webdriver(prefs=True, headless=True, client="firefox", executable=r'/usr/bin/geckodriver')
+    driver = wb.Webdriver(client="firefox")
     try:
         if contest == "megasena":
             data = megasena.Megasena(driver).get_data()
