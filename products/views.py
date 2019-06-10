@@ -14,7 +14,7 @@ def api(request, *args, **kwargs):
             print(data)
         return JsonResponse(data)
     except Exception as a:
-        return JsonResponse("ERROR")
+        return JsonResponse(a)
 
 def home(request):
     return render(request, "home.html")

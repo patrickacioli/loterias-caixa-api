@@ -1,5 +1,5 @@
 from caixa.scripts import webdriver as wb
-from caixa.scripts import megasena, lotofacil
+from caixa.scripts import megasena, lotofacil, quina
 
 def run(contest):
     driver = wb.Webdriver(prefs=True, headless=True)
@@ -8,8 +8,10 @@ def run(contest):
             data = megasena.Megasena(driver).get_data()
         if contest == "lotofacil":
             data = lotofacil.Lotofacil(driver).get_data()
+        if contest == "quina":
+            data = quina.Quina(driver).get_data()
     except Exception as a:
-        return False
+        return a
     finally:
         with open("static/json/%s.json" % contest, "w") as f_:
             f_.write(data)
