@@ -15,7 +15,7 @@ class Megasena:
 
         # Loading contest page
         self.page = driver.get(
-            "http://localhost/pages/megasena.html",
+            "loterias.caixa.gov.br/wps/portal/loterias/landing/megasena",
             element_wait="title-bar",
             element_type="class"
         )

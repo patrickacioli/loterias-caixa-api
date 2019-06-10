@@ -15,7 +15,7 @@ class Lotofacil:
 
         # Loading contest page
         self.page = driver.get(
-            "http://localhost/pages/lotofacil.html",
+            "loterias.caixa.gov.br/wps/portal/loterias/landing/lotofacil",
             element_wait="title-bar",
             element_type="class"
         )
