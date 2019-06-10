@@ -16,7 +16,7 @@ from selenium.webdriver.firefox.options import Options
 
 class Webdriver:
 
-    def __init__(self, cache=False, headless=False, prefs=False, type_=False, client="chrome", executable=r'/usr/bin/chromedriver'):
+    def __init__(self, cache=False, headless=False, prefs=False, type_=False, client="chrome"):
         click.echo("Loading Webdriver...")
 
         if client == "chrome":
@@ -32,11 +32,12 @@ class Webdriver:
                     'disk-cache-size': 5000
                     }
                 self.chrome_options.add_experimental_option('prefs', self.prefs)
-            self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
+            self.driver = webdriver.Chrome(r'/usr/bin/chromedriver', chrome_options=self.chrome_options)
         if client == "firefox":
             options = Options()
-            options.headless = True
-            self.driver = webdriver.Firefox(options=options, executable_path=executable)
+            if headless:
+                options.headless = True
+            self.driver = webdriver.Firefox(options=options, r'/usr/bin/geckodriver')
             
 
     def get(self, url, element_wait=False, element_type=False):
