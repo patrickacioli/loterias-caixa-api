@@ -1,6 +1,5 @@
 from datetime import datetime
 import requests 
-from caixa.scripts import webdriver as wb
 from random import choice
 import json 
 import os 
