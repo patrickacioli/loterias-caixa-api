@@ -50,20 +50,20 @@ def run(contest):
             print(a)
         if contest == "lotofacil":
             os.mknod("static/api/%s/%s.json" % (contest,jr["nu_concurso"]))
-            with open("static/api/%s/%s.json" % (contest,jr["nu_concurso"]), "w") as f_:
+            with open("static/api/%s/%s.json" % (contest,jr["nu_concurso"]), "w+") as f_:
                 json.dump(jr, f_)
         elif contest == "timemania" or contest == "diadesorte":
             print("DIA")
             os.mknod("static/api/%s/%s.json" % (contest,jr["nu_CONCURSO"]))
-            with open("static/api/%s/%s.json" % (contest,jr["nu_CONCURSO"]), "w") as f_:
+            with open("static/api/%s/%s.json" % (contest,jr["nu_CONCURSO"]), "w+") as f_:
                 json.dump(jr, f_)
         elif contest == "lotogol":
             os.mknod("static/api/%s/%s.json" % (contest,jr[0]["co_concurso"]))
-            with open("static/api/%s/%s.json" % (contest,jr[0]["co_concurso"]), "w") as f_:
-                json.dump(jr, f_)
+            with open("static/api/%s/%s.json" % (contest,jr[0]["co_concurso"]), "w+") as f_:
+                json.dump(jr[0], f_)
         else: 
             os.mknod("static/api/%s/%s.json" % (contest, jr["concurso"]))
-            with open("static/api/%s/%s.json" % (contest, jr["concurso"]), "w") as f_:
+            with open("static/api/%s/%s.json" % (contest, jr["concurso"]), "w+") as f_:
                 json.dump(jr, f_)
 
     except Exception as a:

@@ -5,5 +5,5 @@ urlpatterns = [
     #path("", views.login),
     path("process", views.process),
     path("", views.home),
-    path("api/<str:contest>", views.api)    
+    path("api", views.api)    
 ]

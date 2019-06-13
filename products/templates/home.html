@@ -32,23 +32,29 @@
   <div class="card" style="margin-top: 2rem;">
     <div class="card-header bg-success text-white">Verificação da API</div>
     <div class="card-body">
-      <form id="verify-form" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-          <select class="form-control" id="verify-select" name="contest">
-            <option value="megasena">Megasena</option>
-            <option value="lotofacil">Lotofácil</option>
-            <option value="duplasena">Dupla Sena</option>
-            <option value="loteca">Loteca</option>
-            <option value="lotogol">Lotogol</option>
-            <option value="quina">Quina</option>
-            <option value="timemania">Timemania</option>
-            <option value="lotomania">Lotomania</option>
-            <option value="federal">Federal</option>
-            <option value="diadesorte">Dia de sorte</option>
-          </select>
+      <form id="verify-form" method="get" action="api">
+        <div class="row">
+          <div class="form-group col">
+            <select class="form-control" id="verify-select" name="contest">
+              <option value="megasena">Megasena</option>
+              <option value="lotofacil">Lotofácil</option>
+              <option value="duplasena">Dupla Sena</option>
+              <option value="loteca">Loteca</option>
+              <option value="lotogol">Lotogol</option>
+              <option value="quina">Quina</option>
+              <option value="timemania">Timemania</option>
+              <option value="lotomania">Lotomania</option>
+              <option value="federal">Federal</option>
+              <option value="diadesorte">Dia de sorte</option>
+            </select>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <input class="form-control" placeholder="Parâmetro" name="nro" value="last" />
+            </div>
+          </div>
         </div>
-        <button type="button" class="btn btn-success" id="verify">Verificar arquivos</button>
+        <button type="submit" class="btn btn-success">Verificar arquivos</button>
       </form>
     </div>
   </div>

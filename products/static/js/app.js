@@ -7,7 +7,5 @@ $(document).ready(function() {
   });
   $( "#verify" ).click(function( event ) {
     var value = $("#verify-select").prop("value")
-    window.location.replace("api/"+value);
-    event.preventDefault();
   });
 });

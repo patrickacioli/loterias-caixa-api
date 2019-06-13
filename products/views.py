@@ -10,17 +10,42 @@ from os import walk
 from datetime import datetime
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect
+from stat import *
 
 
+@api_view(['GET', 'POST'])
+def api(request):
+    if request.method == 'GET':
+        try: 
+            nro     = request.query_params["nro"]
+            contest = request.query_params["contest"]            
+            if nro == "last":
+                print(nro)
+                # Buscar arquivos no diretório 
+                f, dates = [], []
+                for (dirpath, dirnames, filenames) in walk("static/api/%s" % contest):
+                    f.extend(filenames)                    
+                    break 
+                for file_ in f:
+                    dates.append(os.stat("static/api/%s/%s" % (contest, file_))[ST_CTIME])                
+                last = max(dates)
+                for file_ in f:
+                    if os.stat("static/api/%s/%s" % (contest, file_))[ST_CTIME] == last:
+                        with open("static/api/%s/%s" % (contest, file_), "r") as outfile:
+                            data = json.load(outfile)        
+            else:
+                with open("static/api/%s/%s.json" % (contest, nro), "r") as outfile:
+                    try:
+                        data = json.load(outfile)
+                    except Exception as a:
+                        data = {"response":"500"}
+                        print(json.load(outfile[0]))
 
-def api(request, *args, **kwargs):
-    try:
-        with open('static/json/%s.json' % kwargs["contest"]) as json_file:
-            data = json.load(json_file)
-            print(data)
-        return JsonResponse(data)
-    except Exception as a:
-        return JsonResponse(a)
+
+            return JsonResponse(data)
+
+        except Exception as a:
+            return a
 
 def home(request):
     return render(request, "home.html")
