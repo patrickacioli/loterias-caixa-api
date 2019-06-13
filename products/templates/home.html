@@ -60,5 +60,48 @@
   </div>
 </div>
 </div>
+<br>
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Instruções de uso</div>
+      <div class="card-body">
+        <h5>Execução do Crawler</h5>
+        O crawler executa apenas uma consulta ao site da Caixa. Você pode atualizar os 
+        dados diáriamente, eles serão armazenados
+        no banco de dados para futuras necessidades.
+        Para executar basta escolher a loteria desejada e clicar em "Iniciar Crawler", 
+        se existirem novos dados no site da Caixa, eles serão atualizados no sistema.
+
+        <br> <br> 
+        <h5>API</h5>
+        Existe apenas um endpoint e ele receberá apenas dois parâmetros:
+        <ul>
+          <li><strong>constest:</strong> Indica qual sorteio desejado </li>
+          <li><strong>nro:</strong> Pode ser "last" ou o número do sorte, no caso do "last", ele retornará o último registro no sistema</li>
+        </ul>
+        <br>
+        <strong>Exemplo:</strong>
+        <br>
+        <code>
+            api?contest=megasena&nro=2156
+        </code>
+        <br>
+        Retorna os dados do concurso 2156 da mega sena. O retorno é Json.
+
+        <br>
+        <strong>Exemplo:</strong>
+        <br>
+        <code>
+            api?contest=megasena&nro=last
+        </code>
+        <br>
+        Retorna os dados do último concurso da mega sena. O retorno é Json.
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
