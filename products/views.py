@@ -8,6 +8,8 @@ from caixa.scripts import run
 import os, time
 from os import walk
 from datetime import datetime
+from django.contrib.auth import authenticate
+from django.shortcuts import redirect
 
 
 
@@ -21,15 +23,15 @@ def api(request, *args, **kwargs):
         return JsonResponse(a)
 
 def home(request):
-    return render(request, "home.html", {"data_files": data_files})
+    return render(request, "home.html")
 
 # Create your views here.
 @api_view(['GET', 'POST'])
 def process(request):
-    if request.method == 'POST':
-        result = run.run(request.data["contest"].lower())
+    if request.method == 'POST':        
+        result = run.run(request.data["contest"].lower())        
         return render(request, "content.html", {
-            "title"   : "Processo iniciado",
+            "title"   : "Processo finalizado!",
             "content" : result,
             "class"   : "success",
             "loteria" : request.data["contest"].lower()

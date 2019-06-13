@@ -10,7 +10,7 @@
         <form method="post">
         {% csrf_token %}
         <div class="form-group">
-          <select class="form-control" name="contest">
+          <select class="form-control" id="verify-select" name="contest">
             <option value="megasena">Megasena</option>
             <option value="lotofacil">Lotofácil</option>
             <option value="duplasena">Dupla Sena</option>
@@ -19,6 +19,8 @@
             <option value="quina">Quina</option>
             <option value="timemania">Timemania</option>
             <option value="lotomania">Lotomania</option>
+            <option value="federal">Federal</option>
+            <option value="diadesorte">Dia de sorte</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary" id="load">Iniciar crawler</button>
@@ -42,6 +44,8 @@
             <option value="quina">Quina</option>
             <option value="timemania">Timemania</option>
             <option value="lotomania">Lotomania</option>
+            <option value="federal">Federal</option>
+            <option value="diadesorte">Dia de sorte</option>
           </select>
         </div>
         <button type="button" class="btn btn-success" id="verify">Verificar arquivos</button>
