@@ -70,4 +70,4 @@ def run(contest):
         return "Operação realiza com êxito!"
 
     except Exception as a:
-        return "Ocorreu um erro e não foram gerados novos dados."
+        return "Já existem dados para essa solicitação, verifique a API."
