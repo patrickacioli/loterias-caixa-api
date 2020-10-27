@@ -1,6 +1,6 @@
 beautifulsoup4==4.6.0
 Click==7.0
-cryptography==2.7
+cryptography==3.2
 Django==2.2.2
 django-bootstrap4==0.0.8
 django-filter==2.1.0
